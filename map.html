@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- CartoDB CSS -->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- CSS Icon -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">                
+                <li class="sidebar-brand">
+                    <a href="#">
+                        LUZON
+                    </a>
+                </li>
+                <li class="sidebar-brand-item" onclick="loadSUCMap('MMSU')">
+                    <a href="#">MMSU</a>
+                </li>
+                <li class="sidebar-brand-item" >
+                    <a href="#">ISU</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">CLSU</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">MIT</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">UPLB</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">ADNU</a>
+                </li>
+                <li class="sidebar-brand">
+                    <a href="#">
+                        VISAYAS
+                    </a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">UPC</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">USC</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">VSU</a>
+                </li>
+                <li class="sidebar-brand">
+                    <a href="#">
+                        MINDANAO
+                    </a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">ADZU</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">UP MIN</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">MSU-IIT</a>
+                </li>
+                <li class="sidebar-brand-item">
+                    <a href="#">CSU</a>
+                </li>                                    
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">                    
+                        <button id="menu-toggle" type="button" class="btn btn-default btn-sm" style="margin-left: 10px; vertical-align: middle">
+                            <span class="glyphicon glyphicon-menu-hamburger" style="vertical-align: middle">                            
+                            </span>
+                        </button>                        
+                        <span style="margin-left: 20px; color: #ddd9d9; font-size: 12px">
+                            <i class="material-icons" style="vertical-align: middle; padding-right: 5px">layers</i>THEMATIC LAYERS:
+                        </span>
+                    <div class="btn-group" style="margin-left: 10px">
+                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">STATUS</button>
+                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">RESOURCES</button>
+                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">SUC</button>
+                    </div>
+                    <a href="index.html" style="position: absolute; right: 20px; font-size: 20px; color: #ddd9d9">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </a>
+</div>
+            </div>
+            <div id="map"></div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+    
+    <script>
+        // get the viz.json url from the CartoDB Editor
+        // - click on visualize
+        // - create new visualization
+        // - make visualization public
+        // - click on publish
+        // - go to API tab
+
+        window.onload = function () {
+            $('#map').empty();
+            cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/7e0115e2-f551-11e5-9ff4-0e31c9be1b51/viz.json');
+            }
+    </script>
+
+    <script>
+        function loadSUCMap(suc)
+        {
+            $('#map').empty();
+
+            switch(suc)
+            {
+                case 'MMSU':
+                    cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/977f07d4-e9b9-11e5-bad3-0e5db1731f59/viz.json');
+            }
+        }
+    </script>
+    
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+</body>
+
+</html>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Processing Inventory</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -113,7 +113,7 @@
                     <div class="btn-group" style="margin-left: 10px">
                         <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">STATUS</button>
                         <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">RESOURCES</button>
-                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">SUC</button>
+                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px" onclick="loadGeneralMap(3)">SUC</button>
                     </div>
                     <a href="index.html" style="position: absolute; right: 20px; font-size: 20px; color: #ddd9d9">
                         <i class="glyphicon glyphicon-home"></i>
@@ -151,8 +151,22 @@
 
         window.onload = function () {
             $('#map').empty();
-            cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/7e0115e2-f551-11e5-9ff4-0e31c9be1b51/viz.json');
+            cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/5e987c52-f594-11e5-996a-0e674067d321/viz.json');
             }
+    </script>
+
+    <script>
+        function loadGeneralMap(option)
+        {
+            $('#map').empty();
+
+            switch(option)
+            {
+                case 3:
+                    cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/5e987c52-f594-11e5-996a-0e674067d321/viz.json');
+
+            }
+        }
     </script>
 
     <script>
@@ -164,6 +178,7 @@
             {
                 case 'MMSU':
                     cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/977f07d4-e9b9-11e5-bad3-0e5db1731f59/viz.json');
+                    break;
             }
         }
     </script>

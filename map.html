@@ -49,7 +49,7 @@
                 <li class="sidebar-brand-item" onclick="loadSUCMap('MMSU')">
                     <a href="#">MMSU</a>
                 </li>
-                <li class="sidebar-brand-item" >
+                <li class="sidebar-brand-item" onclick="loadSUCMap('ISU')">
                     <a href="#">ISU</a>
                 </li>
                 <li class="sidebar-brand-item">
@@ -112,8 +112,8 @@
                             <i class="material-icons" style="vertical-align: middle; padding-right: 5px">layers</i>THEMATIC LAYERS:
                         </span>
                     <div class="btn-group" style="margin-left: 10px">
-                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">STATUS</button>
-                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px">RESOURCES</button>
+                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px" onclick="loadGeneralMap(1)">STATUS</button>
+                        <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px" onclick="loadGeneralMap(2)">RESOURCES</button>
                         <button type="button" class="btn btn-primary" style="height: 25px; font-size: 12px" onclick="loadGeneralMap(3)">SUC</button>
                     </div>
                     <a href="index.html" style="position: absolute; right: 20px; font-size: 20px; color: #ddd9d9">
@@ -158,13 +158,19 @@
     <script>
         function loadGeneralMap(option)
         {
-            $('#map').empty();
+            $('#map').empty();           
 
             switch(option)
             {
-                case 3:
+                case 1:
+                    cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/45f6f366-fd6b-11e5-b574-0e674067d321/viz.json');
+                    break;
+                case 2:
+                    cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/3bf9b470-fd61-11e5-9c19-0e31c9be1b51/viz.json');
+                    break;
+                case 3:                   
                     cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/5e987c52-f594-11e5-996a-0e674067d321/viz.json');
-
+                    break;
             }
         }
     </script>
@@ -177,8 +183,12 @@
             switch(suc)
             {
                 case 'MMSU':
-                    cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/977f07d4-e9b9-11e5-bad3-0e5db1731f59/viz.json');
+                    cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/233a36ca-ffba-11e5-83bc-0e5db1731f59/viz.json');
                     break;
+                case 'ISU':
+                    cartodb.createVis('map', 'https://markvener.cartodb.com/api/v2/viz/cc1260c2-ffbc-11e5-b855-0ecd1babdde5/viz.json');
+                    break;
+                   
             }
         }
     </script>
